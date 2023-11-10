@@ -1,3 +1,4 @@
+debug/camino.o
 debug/cronometro.o
 debug/estacion.o
 debug/estacionhorizontal.o

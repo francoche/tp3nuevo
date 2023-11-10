@@ -1,6 +1,6 @@
 #ifndef ESTACION_H
 #define ESTACION_H
-
+#include <iostream>
 
 class Estacion
 {
@@ -16,8 +16,8 @@ public:
     int getfila();
     int getcolumna();
     int gettipo();
-    bool virtual salidaestacion(int fila,int columna,int filastotales, int columnastotales)=0;
-    bool virtual entradaestacion(int fila,int columna ,int filastotales, int columnastotales)=0;
+    bool virtual salidaestacion(int fila,int columna)=0;
+    bool virtual entradaestacion(int fila,int columna )=0;
 };
 
 #endif // ESTACION_H

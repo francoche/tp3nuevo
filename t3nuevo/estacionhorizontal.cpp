@@ -5,7 +5,7 @@ EstacionHorizontal::EstacionHorizontal()
 
 }
 
-bool EstacionHorizontal::salidaestacion(int fila, int columna,int filastotales, int columnastotales)
+bool EstacionHorizontal::salidaestacion(int fila, int columna)
 {
     if(fila==this->fila && columna==this->columna-1){
         return true;
@@ -16,7 +16,7 @@ bool EstacionHorizontal::salidaestacion(int fila, int columna,int filastotales, 
     return false;
 }
 
-bool EstacionHorizontal::entradaestacion(int fila, int columna,int filastotales, int columnastotales)
+bool EstacionHorizontal::entradaestacion(int fila, int columna)
 {
 
 }

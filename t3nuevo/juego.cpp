@@ -217,7 +217,13 @@ void Juego::crearestaciones(int &a, int &b, int &c, int &d)
 
 void Juego::crearcamino(int fila, int columna)
 {
+    Estacion*aux=new Camino();
+    aux->setfila(fila);
+    aux->setcolumna(columna);
     this->camino[fila][columna]=true;
+    this->ocuado[fila][columna]=true;
+    this->existeestacion[fila][columna]=true;
+    this->estaciones[fila][columna]=aux;
 }
 
 bool Juego::esadshacenteestacion(int fila, int columna)
@@ -227,7 +233,7 @@ if(fila-1>=0 && this->existeestacion[fila-1][columna]){
     std::cout<<"hola1"<<std::endl;
     return true;
 }
-if(fila+1<(this->filas-1) && this->existeestacion[fila+1][columna]){
+if(fila+1<(this->filas) && this->existeestacion[fila+1][columna]){
     std::cout<<"hola2"<<std::endl;
     return true;
 }
@@ -235,7 +241,7 @@ if(columna-1>=0 && this->existeestacion[fila][columna-1]){
     std::cout<<"hola3"<<std::endl;
     return true;
 }
-if(columna+1<(this->columnas-1) && this->existeestacion[fila][columna+1]){
+if(columna+1<(this->columnas) && this->existeestacion[fila][columna+1]){
     std::cout<<"hola4"<<std::endl;
     return true;
 }
@@ -264,16 +270,16 @@ bool Juego::esadshacenteultimo(int fila, int columna)
 bool Juego::hayunaestacion(int fila, int columna)
 {
    if(fila-1>=0 && this->existeestacion[fila-1][columna]){
-       return this->estaciones[fila-1][columna]->salidaestacion(fila,columna,filas,columnas);
+       return this->estaciones[fila-1][columna]->salidaestacion(fila,columna);
    }
-   if(fila+1<(this->filas-1) && this->existeestacion[fila+1][columna]){
-       return this->estaciones[fila+1][columna]->salidaestacion(fila,columna,filas,columnas);
+   if(fila+1<this->filas && this->existeestacion[fila+1][columna]){
+       return this->estaciones[fila+1][columna]->salidaestacion(fila,columna);
    }
    if(columna-1>=0 && this->existeestacion[fila][columna-1]){
-        return this->estaciones[fila][columna-1]->salidaestacion(fila,columna,filas,columnas);
+        return this->estaciones[fila][columna-1]->salidaestacion(fila,columna);
    }
-   if(columna+1<(this->columnas-1) && this->existeestacion[fila][columna+1]){
-        return this->estaciones[fila][columna+1]->salidaestacion(fila,columna,filas,columnas);
+   if(columna+1<this->columnas && this->existeestacion[fila][columna+1]){
+        return this->estaciones[fila][columna+1]->salidaestacion(fila,columna);
    }
    return false;
 }

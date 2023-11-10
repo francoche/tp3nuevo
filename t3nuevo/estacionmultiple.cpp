@@ -5,24 +5,28 @@ Estacionmultiple::Estacionmultiple()
 
 }
 
-bool Estacionmultiple::salidaestacion(int fila, int columna,int filastotales, int columnastotales)
+bool Estacionmultiple::salidaestacion(int fila, int columna)
 {
-    if(columna-1>=0 && fila==this->fila && columna-1==this->columna){
+    if(fila-1==this->fila && columna==this->columna){
+        std::cout<<"no ando1"<<std::endl;
         return true;
     }
-    if(fila-1>=0 && fila-1==this->fila && columna==this->columna){
+    if( fila+1==this->fila && columna==this->columna){
+        std::cout<<"no ando2"<<std::endl;
         return true;
     }
-    if(fila+1<filastotales && fila+1==this->fila && columna==this->columna){
+    if( fila==this->fila && columna-1==this->columna){
+        std::cout<<"no ando3"<<std::endl;
         return true;
     }
-    if(columna+1<columnastotales && fila==this->columna && columna+1==this->columna){
+    if(fila==this->fila && columna+1==this->columna){
+        std::cout<<"no ando4"<<std::endl;
         return true;
     }
     return false;
 }
 
-bool Estacionmultiple::entradaestacion(int fila, int columna,int filastotales, int columnastotales)
+bool Estacionmultiple::entradaestacion(int fila, int columna)
 {
 
 }

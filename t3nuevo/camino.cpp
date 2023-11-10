@@ -7,16 +7,20 @@ Camino::Camino()
 
 bool Camino::salidaestacion(int fila, int columna)
 {
-    if(fila==this->fila+1 && columna==this->columna){
+    if(fila-1==this->fila && columna==this->columna){
+        std::cout<<"no ando1"<<std::endl;
         return true;
     }
-    if(fila==this->fila-1 && columna==this->columna){
+    if( fila+1==this->fila && columna==this->columna){
+        std::cout<<"no ando2"<<std::endl;
         return true;
     }
-    if(fila==this->fila && columna==this->columna+1){
+    if( fila==this->fila && columna-1==this->columna){
+        std::cout<<"no ando3"<<std::endl;
         return true;
     }
-    if(fila==this->fila && columna==this->columna-1){
+    if(fila==this->fila && columna+1==this->columna){
+        std::cout<<"no ando4"<<std::endl;
         return true;
     }
     return false;

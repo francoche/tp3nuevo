@@ -7,8 +7,9 @@ class Estacionvertical : public Estacion
 {
 public:
     Estacionvertical();
-    bool salidaestacion(int fila,int columna,int filastotales, int columnastotales);
-    bool entradaestacion(int fila,int columna,int filastotales, int columnastotales);
+    bool salidaestacion(int fila,int columna);
+    bool entradaestacion(int fila,int columna);
+
 };
 
 #endif // ESTACIONVERTICAL_H

@@ -7,8 +7,9 @@ class Estacionmultiple : public Estacion
 {
 public:
     Estacionmultiple();
-    bool salidaestacion(int fila,int columna,int filastotales, int columnastotales);
-    bool entradaestacion(int fila,int columna,int filastotales, int columnastotales);
+    bool salidaestacion(int fila,int columna);
+    bool entradaestacion(int fila,int columna);
+
 };
 
 #endif // ESTACIONMULTIPLE_H

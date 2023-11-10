@@ -7,8 +7,8 @@ class EstacionHorizontal : public Estacion
 {
 public:
     EstacionHorizontal();
-    bool salidaestacion(int fila,int columna,int filastotales, int columnastotales);
-    bool entradaestacion(int fila,int columna,int filastotales, int columnastotales);
+    bool salidaestacion(int fila,int columna);
+    bool entradaestacion(int fila,int columna);
 };
 
 #endif // ESTACIONHORIZONTAL_H
