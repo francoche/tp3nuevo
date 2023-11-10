@@ -4,6 +4,9 @@
 
 class Boton
 {
+private:
+    int fila;
+    int columna;
 public:
     Boton();
 };

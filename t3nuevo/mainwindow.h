@@ -6,6 +6,7 @@
 #include<QTimer>
 #include <QMessageBox>
 #include "cronometro.h"
+#include "juego.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,16 +22,20 @@ public:
     void crearjuego();
     void reset();
 
+
 private slots:
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
     void aumentartiempo();
+    void graficador();
+
 
 private:
     Ui::MainWindow *ui;
     QPushButton *** botones;
     QTimer timer;
     Cronometro cronometro;
+    Juego juego;
 
     int filas;
     int columnas;

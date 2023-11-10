@@ -1,14 +1,14 @@
-#ifndef ESTACIONNORMAL_H
-#define ESTACIONNORMAL_H
+#ifndef ESTACIONHORIZONTAL_H
+#define ESTACIONHORIZONTAL_H
 
 #include "estacion.h"
 
-class Estacionnormal : public Estacion
+class EstacionHorizontal : public Estacion
 {
 public:
-    Estacionnormal();
+    EstacionHorizontal();
     bool salidaestacion(int fila,int columna,int filastotales, int columnastotales);
     bool entradaestacion(int fila,int columna,int filastotales, int columnastotales);
 };
 
-#endif // ESTACIONNORMAL_H
+#endif // ESTACIONHORIZONTAL_H

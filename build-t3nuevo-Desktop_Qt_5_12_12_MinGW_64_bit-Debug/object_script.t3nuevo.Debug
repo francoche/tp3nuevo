@@ -1,0 +1,10 @@
+debug/cronometro.o
+debug/estacion.o
+debug/estacionhorizontal.o
+debug/estacionmultiple.o
+debug/estacionnormal.o
+debug/estacionvertical.o
+debug/juego.o
+debug/main.o
+debug/mainwindow.o
+debug/moc_mainwindow.o

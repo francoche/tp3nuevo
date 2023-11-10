@@ -11,14 +11,22 @@ CONFIG += c++11
 SOURCES += \
     cronometro.cpp \
     estacion.cpp \
+    estacionhorizontal.cpp \
+    estacionmultiple.cpp \
     estacionnormal.cpp \
+    estacionvertical.cpp \
+    juego.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     cronometro.h \
     estacion.h \
+    estacionhorizontal.h \
+    estacionmultiple.h \
     estacionnormal.h \
+    estacionvertical.h \
+    juego.h \
     mainwindow.h
 
 FORMS += \

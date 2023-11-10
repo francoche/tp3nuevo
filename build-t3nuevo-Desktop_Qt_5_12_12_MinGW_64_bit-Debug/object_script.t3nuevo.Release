@@ -1,0 +1,10 @@
+release/cronometro.o
+release/estacion.o
+release/estacionhorizontal.o
+release/estacionmultiple.o
+release/estacionnormal.o
+release/estacionvertical.o
+release/juego.o
+release/main.o
+release/mainwindow.o
+release/moc_mainwindow.o
