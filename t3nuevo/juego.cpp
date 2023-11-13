@@ -12,12 +12,15 @@ void Juego::crearmatriz()
     this->existeestacion=new bool*[this->filas];
     this->camino=new bool*[this->filas];
     this->tipo=new int*[this->filas];
+    this->estaziones=new eestacion*[this->filas];
     for (int i = 0; i< filas; i++) {
         this->estaciones[i] = new Estacion*[this->columnas];
         this->ocuado[i]=new bool[this->columnas];
         this->existeestacion[i]=new bool[this->columnas];
         this->camino[i]=new bool[this->columnas];
         this->tipo[i]=new int[this->columnas];
+        this->estaziones[i]=new eestacion[this->columnas];
+
 
     }
     for(int i=0;i<filas;i++){
@@ -27,6 +30,7 @@ void Juego::crearmatriz()
             this->existeestacion[i][j]=false;
             this->camino[i][j]=false;
             this->tipo[i][j]=0;
+
 
 
     }
@@ -40,11 +44,15 @@ void Juego::borrarmatriz()
         delete [] ocuado[i];
         delete [] existeestacion[i];
         delete [] tipo[i];
+        delete [] estaziones[i];
+
     }
     delete [] estaciones;
     delete [] ocuado;
     delete [] existeestacion;
     delete [] tipo;
+    delete [] estaziones;
+
 }
 
 void Juego::setfilaultom(int a)
@@ -205,7 +213,7 @@ void Juego::crearestaciones(int &a, int &b, int &c, int &d)
         estaciones[f2][c2]->setcolumna(c2);
         estaciones[f2][c2]->settipo(t2);
         this->existeestacion[f2][c2]=true;
-        //this->ocuado[f2][c2]=true;
+        this->ocuado[f2][c2]=true;
         this->tipo[f2][c2]=t2;
         c=f2;d=c2;
             break;
@@ -216,7 +224,7 @@ void Juego::crearestaciones(int &a, int &b, int &c, int &d)
         estaciones[f2][c2]->setcolumna(c2);
         estaciones[f2][c2]->settipo(t2);
         this->existeestacion[f2][c2]=true;
-        //this->ocuado[f2][c2]=true;
+        this->ocuado[f2][c2]=true;
          this->tipo[f2][c2]=t2;
         c=f2;d=c2;
             break;
@@ -227,7 +235,7 @@ void Juego::crearestaciones(int &a, int &b, int &c, int &d)
         estaciones[f2][c2]->setcolumna(c2);
         estaciones[f2][c2]->settipo(t2);
         this->existeestacion[f2][c2]=true;
-        //this->ocuado[f2][c2]=true;
+        this->ocuado[f2][c2]=true;
          this->tipo[f2][c2]=t2;
         c=f2;d=c2;
             break;
@@ -238,7 +246,7 @@ void Juego::crearestaciones(int &a, int &b, int &c, int &d)
         estaciones[f2][c2]->setcolumna(c2);
         estaciones[f2][c2]->settipo(t2);
         this->existeestacion[f2][c2]=true;
-        //this->ocuado[f2][c2]=true;
+        this->ocuado[f2][c2]=true;
          this->tipo[f2][c2]=t2;
         c=f2;d=c2;
             break;}
@@ -314,7 +322,7 @@ bool Juego::crearproximaestacion(int &a,int &b)
         estaciones[f2][c2]->setcolumna(c2);
         estaciones[f2][c2]->settipo(t2);
         this->existeestacion[f2][c2]=true;
-       // this->ocuado[f2][c2]=true;
+       this->ocuado[f2][c2]=true;
          this->tipo[f2][c2]=t2;
         a=f2;b=c2;
             break;
@@ -325,7 +333,7 @@ bool Juego::crearproximaestacion(int &a,int &b)
         estaciones[f2][c2]->setcolumna(c2);
         estaciones[f2][c2]->settipo(t2);
         this->existeestacion[f2][c2]=true;
-        //this->ocuado[f2][c2]=true;
+        this->ocuado[f2][c2]=true;
          this->tipo[f2][c2]=t2;
         a=f2;b=c2;
             break;
@@ -336,7 +344,7 @@ bool Juego::crearproximaestacion(int &a,int &b)
         estaciones[f2][c2]->setcolumna(c2);
         estaciones[f2][c2]->settipo(t2);
         this->existeestacion[f2][c2]=true;
-        //this->ocuado[f2][c2]=true;
+        this->ocuado[f2][c2]=true;
          this->tipo[f2][c2]=t2;
         a=f2;b=c2;
             break;
@@ -347,7 +355,7 @@ bool Juego::crearproximaestacion(int &a,int &b)
         estaciones[f2][c2]->setcolumna(c2);
         estaciones[f2][c2]->settipo(t2);
         this->existeestacion[f2][c2]=true;
-        //this->ocuado[f2][c2]=true;
+        this->ocuado[f2][c2]=true;
          this->tipo[f2][c2]=t2;
         a=f2;b=c2;
             break;}
@@ -372,13 +380,13 @@ void Juego::crearcamino(int fila, int columna)
 
 void Juego::resetecamino(int fila, int columna)
 {
-    /*for(int i=0;i<filas;i++){
+    for(int i=0;i<filas;i++){
         for(int j=0;j<columnas;j++){
              this->camino[i][j]=false;
 
          }
 
-    }*/
+    }
     this->camino[fila][columna]=true;
 }
 
@@ -560,7 +568,7 @@ void Juego::leerdimensiones(int &a,int &b)
 
 }
 
-void Juego::guardarpartida()
+void Juego::guardarpartida(int timer)
 {
     guardar aux;
     aux.filas=this->filas;
@@ -569,6 +577,7 @@ void Juego::guardarpartida()
     aux.columnaulltimo=this->columnaultimo;
     aux.filaproxestacion=this->filaproxestacion;
     aux.columnaproxestacion=this->columnaproxestacion;
+    aux.timer=timer;
     ofstream archivo("ultimapart.dat",ios::binary);
     archivo.write((char*)&aux,sizeof (guardar));
     archivo.close();
@@ -644,6 +653,45 @@ void Juego::guardarexiestacion()
         archivo.close();
 }
 
+void Juego::guardareztaciones()
+{
+    copiarmatrizestacione();
+    ofstream archivo("estaziones.dat", ios::binary);
+
+
+        archivo.write(reinterpret_cast<char*>(&filas), sizeof(int));
+        archivo.write(reinterpret_cast<char*>(&columnas), sizeof(int));
+
+
+        for (int i = 0; i < filas; i++) {
+            archivo.write(reinterpret_cast<char*>(estaziones[i]), columnas * sizeof(eestacion));
+
+        }
+
+        archivo.close();
+
+}
+
+void Juego::copiarmatrizestacione()
+{
+    for(int i=0;i<filas;i++){
+        for(int j=0;j<columnas;j++){
+            if(existeestacion[i][j]){
+                estaziones[i][j].fila=estaciones[i][j]->getfila();
+                estaziones[i][j].columna=estaciones[i][j]->getcolumna();
+                estaziones[i][j].cont=estaciones[i][j]->getcontador();
+                estaziones[i][j].tipo=estaciones[i][j]->gettipo();
+                estaziones[i][j].clikeada=estaciones[i][j]->getclikeada();
+
+            }
+        }
+    }
+}
+
+
+
+
+
 
 
 
@@ -684,11 +732,31 @@ int **Juego::leertipo()
         return matriz;
 }
 
+eestacion **Juego::leerestaziones()
+{
+    ifstream archivo("estaziones.dat", ios::binary);
+
+
+        archivo.read(reinterpret_cast<char*>(&filas), sizeof(int));
+        archivo.read(reinterpret_cast<char*>(&columnas), sizeof(int));
+
+        eestacion** matriz = new eestacion*[filas];
+        for (int i = 0; i < filas; i++) {
+            matriz[i] = new eestacion[columnas];
+            archivo.read(reinterpret_cast<char*>(matriz[i]), columnas * sizeof(eestacion));
+        }
+
+        archivo.close();
+        return matriz;
+}
 
 
 
 
-void Juego::cargarpartida()
+
+
+
+void Juego::cargarpartida(int &timer)
 {
 
     guardar aux;
@@ -705,6 +773,7 @@ void Juego::cargarpartida()
     cout<<columnaultimo;
     this->filaproxestacion=aux.filaproxestacion;
     this->columnaproxestacion=aux.columnaproxestacion;
+    timer=aux.timer;
     archivo.close();
 
     /*bool**aux2;
@@ -784,10 +853,25 @@ void Juego::cargarmatrices()
         this->tipo[i][j]=aux4[i][j];
     }
     }
+    eestacion**aux5=leerestaziones();
+    for(int i=0;i<filas;i++){
+        for(int j=0;j<columnas;j++){
+        this->estaziones[i][j]=aux5[i][j];
+    }
+    }
+
+
 }
 bool Juego::recargarocupado(int a, int b)
 {
-    return ocuado[a][b];
+    if(ocuado[a][b] ){
+
+         return true;
+
+
+    }
+    return false;
+
 }
 
 bool Juego::recargarestacion(int a, int b)
@@ -824,6 +908,10 @@ void Juego::recrearmatrizestaciones()
                   aux->setfila(i);
                   aux->setcolumna(j);
                   aux->settipo(t);
+                  aux->setcontador(estaziones[i][j].cont);
+                  if(estaziones[i][j].cont<2){
+                      aux->setclikeada();
+                  }
                   estaciones[i][j]=aux;
                   break;
 
@@ -861,6 +949,25 @@ void Juego::recrearmatrizestaciones()
 }
 
 }
+
+bool Juego::chekeartipo2(int a, int b)
+{
+    if(existeestacion[a][b] && estaziones[a][b].tipo==2 && estaziones[a][b].cont==1){
+        return true;
+    }
+    return false;
+}
+
+bool Juego::chekearultimo(int a, int b)
+{
+    if(a==filaproxestacion && b==columnaproxestacion){
+        return true;
+    }
+    return false;
+}
+
+
+
 
 
 

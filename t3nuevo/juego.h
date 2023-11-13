@@ -10,6 +10,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+
 struct guardar{
     int filas;
     int columnas;
@@ -17,6 +18,7 @@ struct guardar{
     int columnaulltimo;
     int filaproxestacion;
     int columnaproxestacion;
+    int timer;
 };
 struct eestacion{
     int tipo;
@@ -35,6 +37,7 @@ private:
     bool**existeestacion;
     bool**camino;
     int **tipo;
+    eestacion**estaziones;
     int filas;
     int columnas;
     int filaultimo;
@@ -70,28 +73,30 @@ public:
     void archivardimensiones(int a,int b);
     void leerdimensiones(int &a,int &b);
 
-    void guardarpartida();
+    void guardarpartida(int timer);
     void guardarocupado();
     void guardarcamino();
     void guardartipo();
     void guardarexiestacion();
+    void guardareztaciones();
+    void copiarmatrizestacione();
 
-    /*void setexistenciaestacion(bool**a);
-    void setcoupado(bool**a);
-    void setcamino(bool**a);
-    void settipo(int**a);*/
 
 
 
     bool** leerbool(char*a);
     int **leertipo();
+    eestacion**leerestaziones();
 
-    void cargarpartida();
+
+    void cargarpartida(int &timer);
     void cargarmatrices();
 
     bool recargarocupado(int a,int b);
     bool recargarestacion(int a,int b);
     void recrearmatrizestaciones();
+    bool chekeartipo2(int a,int b);
+    bool chekearultimo(int a,int b);
 
 
 

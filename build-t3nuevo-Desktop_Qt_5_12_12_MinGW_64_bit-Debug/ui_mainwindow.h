@@ -45,11 +45,13 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(800, 600);
+        MainWindow->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         widget = new QWidget(centralwidget);
         widget->setObjectName(QString::fromUtf8("widget"));
         widget->setGeometry(QRect(9, 9, 782, 411));
+        widget->setStyleSheet(QString::fromUtf8(""));
         gridLayoutWidget = new QWidget(widget);
         gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
         gridLayoutWidget->setGeometry(QRect(0, 0, 781, 411));
@@ -59,15 +61,18 @@ public:
         widget_2 = new QWidget(centralwidget);
         widget_2->setObjectName(QString::fromUtf8("widget_2"));
         widget_2->setGeometry(QRect(9, 429, 782, 121));
+        widget_2->setStyleSheet(QString::fromUtf8(""));
         lcdNumber = new QLCDNumber(widget_2);
         lcdNumber->setObjectName(QString::fromUtf8("lcdNumber"));
         lcdNumber->setGeometry(QRect(10, 20, 111, 81));
         pushButton = new QPushButton(widget_2);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(140, 70, 151, 31));
+        pushButton->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 0);"));
         pushButton_2 = new QPushButton(widget_2);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
         pushButton_2->setGeometry(QRect(300, 70, 151, 31));
+        pushButton_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 0);"));
         spinBox = new QSpinBox(widget_2);
         spinBox->setObjectName(QString::fromUtf8("spinBox"));
         spinBox->setGeometry(QRect(140, 20, 141, 21));
@@ -77,9 +82,11 @@ public:
         pushButton_3 = new QPushButton(widget_2);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
         pushButton_3->setGeometry(QRect(450, 70, 151, 31));
+        pushButton_3->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 0);"));
         pushButton_4 = new QPushButton(widget_2);
         pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
         pushButton_4->setGeometry(QRect(600, 70, 151, 31));
+        pushButton_4->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 0);"));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));

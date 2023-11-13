@@ -2,7 +2,7 @@
 
 Camino::Camino()
 {
-this->cont=0;
+this->cont=1;
 this->tipo=5;
 }
 

@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">
+</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
@@ -22,6 +26,9 @@
       <width>782</width>
       <height>411</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <widget class="QWidget" name="gridLayoutWidget">
      <property name="geometry">
@@ -44,6 +51,10 @@
       <height>121</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">
+</string>
+    </property>
     <widget class="QLCDNumber" name="lcdNumber">
      <property name="geometry">
       <rect>
@@ -63,6 +74,9 @@
        <height>31</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 0);</string>
+     </property>
      <property name="text">
       <string>start</string>
      </property>
@@ -75,6 +89,9 @@
        <width>151</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 0);</string>
      </property>
      <property name="text">
       <string>reset</string>
@@ -109,6 +126,9 @@
        <height>31</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 0);</string>
+     </property>
      <property name="text">
       <string>guardar</string>
      </property>
@@ -121,6 +141,9 @@
        <width>151</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 0);</string>
      </property>
      <property name="text">
       <string>cargar</string>

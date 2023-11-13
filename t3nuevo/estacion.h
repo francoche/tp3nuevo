@@ -18,6 +18,7 @@ public:
     int getfila();
     int getcolumna();
     int gettipo();
+    void setcontador(int a);
     void disminuircontador();
     int getcontador();
     void setclikeada();

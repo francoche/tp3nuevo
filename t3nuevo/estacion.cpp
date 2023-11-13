@@ -36,6 +36,11 @@ int Estacion::gettipo()
     return this->tipo;
 }
 
+void Estacion::setcontador(int a)
+{
+    this->cont=a;
+}
+
 void Estacion::disminuircontador()
 {
     this->cont=this->cont-1;

@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include<QTimer>
 #include <QMessageBox>
+#include <QLCDNumber>
 #include "cronometro.h"
 #include "juego.h"
 #include <fstream>
