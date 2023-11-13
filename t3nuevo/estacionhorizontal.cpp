@@ -2,7 +2,7 @@
 
 EstacionHorizontal::EstacionHorizontal()
 {
-
+this->cont=1;
 }
 
 bool EstacionHorizontal::salidaestacion(int fila, int columna)

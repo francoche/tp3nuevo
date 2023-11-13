@@ -35,6 +35,8 @@ public:
     QPushButton *pushButton_2;
     QSpinBox *spinBox;
     QSpinBox *spinBox_2;
+    QPushButton *pushButton_3;
+    QPushButton *pushButton_4;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -72,6 +74,12 @@ public:
         spinBox_2 = new QSpinBox(widget_2);
         spinBox_2->setObjectName(QString::fromUtf8("spinBox_2"));
         spinBox_2->setGeometry(QRect(300, 20, 151, 21));
+        pushButton_3 = new QPushButton(widget_2);
+        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        pushButton_3->setGeometry(QRect(450, 70, 151, 31));
+        pushButton_4 = new QPushButton(widget_2);
+        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
+        pushButton_4->setGeometry(QRect(600, 70, 151, 31));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -91,6 +99,8 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         pushButton->setText(QApplication::translate("MainWindow", "start", nullptr));
         pushButton_2->setText(QApplication::translate("MainWindow", "reset", nullptr));
+        pushButton_3->setText(QApplication::translate("MainWindow", "guardar", nullptr));
+        pushButton_4->setText(QApplication::translate("MainWindow", "cargar", nullptr));
     } // retranslateUi
 
 };

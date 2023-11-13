@@ -8,6 +8,8 @@ protected:
     int fila;
     int columna;
     int tipo;
+    int cont;
+    bool clikeada=false;
 public:
     Estacion();
     void setfila(int a);
@@ -16,6 +18,10 @@ public:
     int getfila();
     int getcolumna();
     int gettipo();
+    void disminuircontador();
+    int getcontador();
+    void setclikeada();
+    bool getclikeada();
     bool virtual salidaestacion(int fila,int columna)=0;
     bool virtual entradaestacion(int fila,int columna )=0;
 };

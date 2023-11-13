@@ -2,7 +2,8 @@
 
 Camino::Camino()
 {
-
+this->cont=0;
+this->tipo=5;
 }
 
 bool Camino::salidaestacion(int fila, int columna)

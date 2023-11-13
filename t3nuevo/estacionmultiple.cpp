@@ -2,7 +2,7 @@
 
 Estacionmultiple::Estacionmultiple()
 {
-
+this->cont=2;
 }
 
 bool Estacionmultiple::salidaestacion(int fila, int columna)

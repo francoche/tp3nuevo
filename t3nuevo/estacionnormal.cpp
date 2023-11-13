@@ -2,7 +2,7 @@
 
 Estacionnormal::Estacionnormal()
 {
-
+this->cont=1;
 }
 
 bool Estacionnormal::salidaestacion(int fila, int columna)

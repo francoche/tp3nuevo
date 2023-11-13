@@ -36,4 +36,24 @@ int Estacion::gettipo()
     return this->tipo;
 }
 
+void Estacion::disminuircontador()
+{
+    this->cont=this->cont-1;
+}
+
+int Estacion::getcontador()
+{
+    return this->cont;
+}
+
+void Estacion::setclikeada()
+{
+    this->clikeada=true;
+}
+
+bool Estacion::getclikeada()
+{
+    return this->clikeada;
+}
+
 
