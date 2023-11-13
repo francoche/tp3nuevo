@@ -11,14 +11,14 @@ void Juego::crearmatriz()
     this->ocuado=new bool*[this->filas];
     this->existeestacion=new bool*[this->filas];
     this->camino=new bool*[this->filas];
-    this->tipo=new int*[this->filas];
+    //this->tipo=new int*[this->filas];
     this->estaziones=new eestacion*[this->filas];
     for (int i = 0; i< filas; i++) {
         this->estaciones[i] = new Estacion*[this->columnas];
         this->ocuado[i]=new bool[this->columnas];
         this->existeestacion[i]=new bool[this->columnas];
         this->camino[i]=new bool[this->columnas];
-        this->tipo[i]=new int[this->columnas];
+        //this->tipo[i]=new int[this->columnas];
         this->estaziones[i]=new eestacion[this->columnas];
 
 
@@ -29,7 +29,7 @@ void Juego::crearmatriz()
             this->ocuado[i][j]=false;
             this->existeestacion[i][j]=false;
             this->camino[i][j]=false;
-            this->tipo[i][j]=0;
+            //this->tipo[i][j]=0;
 
 
 
@@ -43,14 +43,14 @@ void Juego::borrarmatriz()
         delete [] estaciones[i];
         delete [] ocuado[i];
         delete [] existeestacion[i];
-        delete [] tipo[i];
+        //delete [] tipo[i];
         delete [] estaziones[i];
 
     }
     delete [] estaciones;
     delete [] ocuado;
     delete [] existeestacion;
-    delete [] tipo;
+    //delete [] tipo;
     delete [] estaziones;
 
 }
@@ -96,8 +96,9 @@ int Juego::gettipoestacion(int fila,int columna)
     return   this->estaciones[fila][columna]->gettipo();
 }
 
-void Juego::crearestaciones(int &a, int &b, int &c, int &d)
-{
+bool Juego::crearestaciones(int &a, int &b, int &c, int &d)
+{if(filas>2 && columnas>2){
+    int cont=0,cont2=0;
     srand(time(NULL));
     int f1,c1,f2,c2,t,t2;
     t=1+rand()%4;
@@ -109,10 +110,11 @@ void Juego::crearestaciones(int &a, int &b, int &c, int &d)
             estaciones[f1][c1]->setfila(f1);
             estaciones[f1][c1]->setcolumna(c1);
             estaciones[f1][c1]->settipo(t);
+            estaciones[f1][c1]->setclikeada();
             this->ocuado[f1][c1]=true;
             this->existeestacion[f1][c1]=true;
             this->camino[f1][c1]=true;
-            this->tipo[f1][c1]=t;
+            //this->tipo[f1][c1]=t;
             this->filaultimo=f1;
             this->columnaultimo=c1;
             a=f1;b=c1;
@@ -124,10 +126,11 @@ void Juego::crearestaciones(int &a, int &b, int &c, int &d)
             estaciones[f1][c1]->setfila(f1);
             estaciones[f1][c1]->setcolumna(c1);
             estaciones[f1][c1]->settipo(t);
+            estaciones[f1][c1]->setclikeada();
             this->ocuado[f1][c1]=true;
             this->existeestacion[f1][c1]=true;
             this->camino[f1][c1]=true;
-            this->tipo[f1][c1]=t;
+            //this->tipo[f1][c1]=t;
             this->filaultimo=f1;
             this->columnaultimo=c1;
             a=f1;b=c1;
@@ -139,10 +142,11 @@ void Juego::crearestaciones(int &a, int &b, int &c, int &d)
             estaciones[f1][c1]->setfila(f1);
             estaciones[f1][c1]->setcolumna(c1);
             estaciones[f1][c1]->settipo(t);
+            estaciones[f1][c1]->setclikeada();
             this->ocuado[f1][c1]=true;
             this->existeestacion[f1][c1]=true;
             this->camino[f1][c1]=true;
-            this->tipo[f1][c1]=t;
+            //this->tipo[f1][c1]=t;
             this->filaultimo=f1;
             this->columnaultimo=c1;
             a=f1;b=c1;
@@ -154,10 +158,11 @@ void Juego::crearestaciones(int &a, int &b, int &c, int &d)
             estaciones[f1][c1]->setfila(f1);
             estaciones[f1][c1]->setcolumna(c1);
             estaciones[f1][c1]->settipo(t);
+            estaciones[f1][c1]->setclikeada();
             this->ocuado[f1][c1]=true;
             this->existeestacion[f1][c1]=true;
             this->camino[f1][c1]=true;
-            this->tipo[f1][c1]=t;
+            //this->tipo[f1][c1]=t;
             this->filaultimo=f1;
             this->columnaultimo=c1;
             a=f1;b=c1;
@@ -214,7 +219,7 @@ void Juego::crearestaciones(int &a, int &b, int &c, int &d)
         estaciones[f2][c2]->settipo(t2);
         this->existeestacion[f2][c2]=true;
         this->ocuado[f2][c2]=true;
-        this->tipo[f2][c2]=t2;
+        //this->tipo[f2][c2]=t2;
         c=f2;d=c2;
             break;
         }
@@ -225,7 +230,7 @@ void Juego::crearestaciones(int &a, int &b, int &c, int &d)
         estaciones[f2][c2]->settipo(t2);
         this->existeestacion[f2][c2]=true;
         this->ocuado[f2][c2]=true;
-         this->tipo[f2][c2]=t2;
+         //this->tipo[f2][c2]=t2;
         c=f2;d=c2;
             break;
         }
@@ -236,7 +241,7 @@ void Juego::crearestaciones(int &a, int &b, int &c, int &d)
         estaciones[f2][c2]->settipo(t2);
         this->existeestacion[f2][c2]=true;
         this->ocuado[f2][c2]=true;
-         this->tipo[f2][c2]=t2;
+         //this->tipo[f2][c2]=t2;
         c=f2;d=c2;
             break;
         }
@@ -247,13 +252,16 @@ void Juego::crearestaciones(int &a, int &b, int &c, int &d)
         estaciones[f2][c2]->settipo(t2);
         this->existeestacion[f2][c2]=true;
         this->ocuado[f2][c2]=true;
-         this->tipo[f2][c2]=t2;
+         //this->tipo[f2][c2]=t2;
         c=f2;d=c2;
             break;}
 
     }
     this->filaproxestacion=f2;
     this->columnaproxestacion=c2;
+    return true;
+    }
+    return false;
 
 }
 
@@ -309,7 +317,7 @@ bool Juego::crearproximaestacion(int &a,int &b)
             cont2++;
             t2=1+rand()%4;
             if(cont2>50){
-                return true;
+                return false;
             }
         }
 
@@ -323,7 +331,7 @@ bool Juego::crearproximaestacion(int &a,int &b)
         estaciones[f2][c2]->settipo(t2);
         this->existeestacion[f2][c2]=true;
        this->ocuado[f2][c2]=true;
-         this->tipo[f2][c2]=t2;
+         //this->tipo[f2][c2]=t2;
         a=f2;b=c2;
             break;
         }
@@ -334,7 +342,7 @@ bool Juego::crearproximaestacion(int &a,int &b)
         estaciones[f2][c2]->settipo(t2);
         this->existeestacion[f2][c2]=true;
         this->ocuado[f2][c2]=true;
-         this->tipo[f2][c2]=t2;
+         //this->tipo[f2][c2]=t2;
         a=f2;b=c2;
             break;
         }
@@ -345,7 +353,7 @@ bool Juego::crearproximaestacion(int &a,int &b)
         estaciones[f2][c2]->settipo(t2);
         this->existeestacion[f2][c2]=true;
         this->ocuado[f2][c2]=true;
-         this->tipo[f2][c2]=t2;
+         //this->tipo[f2][c2]=t2;
         a=f2;b=c2;
             break;
         }
@@ -356,7 +364,7 @@ bool Juego::crearproximaestacion(int &a,int &b)
         estaciones[f2][c2]->settipo(t2);
         this->existeestacion[f2][c2]=true;
         this->ocuado[f2][c2]=true;
-         this->tipo[f2][c2]=t2;
+         //this->tipo[f2][c2]=t2;
         a=f2;b=c2;
             break;}
 
@@ -617,7 +625,7 @@ void Juego::guardarcamino()
         archivo.close();
 }
 
-void Juego::guardartipo()
+/*void Juego::guardartipo()
 {
 
     ofstream archivo("tipo.dat",ios::binary);
@@ -634,7 +642,7 @@ void Juego::guardartipo()
         }
 
         archivo.close();
-}
+}*/
 
 void Juego::guardarexiestacion()
 {
@@ -714,7 +722,7 @@ bool **Juego::leerbool(char*a)
         return matriz;
 }
 
-int **Juego::leertipo()
+/*int **Juego::leertipo()
 {
     ifstream archivo("tipo.dat", ios::binary);
 
@@ -730,7 +738,7 @@ int **Juego::leertipo()
 
         archivo.close();
         return matriz;
-}
+}*/
 
 eestacion **Juego::leerestaziones()
 {
@@ -846,13 +854,13 @@ void Juego::cargarmatrices()
         this->existeestacion[i][j]=aux3[i][j];
     }
     }
-    int **aux4=leertipo();
+    /*int **aux4=leertipo();
 
     for(int i=0;i<filas;i++){
         for(int j=0;j<columnas;j++){
         this->tipo[i][j]=aux4[i][j];
     }
-    }
+    }*/
     eestacion**aux5=leerestaziones();
     for(int i=0;i<filas;i++){
         for(int j=0;j<columnas;j++){
@@ -864,7 +872,7 @@ void Juego::cargarmatrices()
 }
 bool Juego::recargarocupado(int a, int b)
 {
-    if(ocuado[a][b] ){
+    if(ocuado[a][b]){
 
          return true;
 
@@ -888,10 +896,10 @@ void Juego::recrearmatrizestaciones()
     int t;
     for(int i=0;i<filas;i++){
         for(int j=0;j<columnas;j++){
-        cout<<"fila "<<i<<"columna "<<j<<"tipo "<<this->tipo[i][j]<<"ecistencia "<<existeestacion[i][j]<<endl;
+        //cout<<"fila "<<i<<"columna "<<j<<"tipo "<<this->tipo[i][j]<<"ecistencia "<<existeestacion[i][j]<<endl;
             if(existeestacion[i][j]==true){
-                cout<<"entreeeeeeeeeeeeeeeeeeeeee"<<endl;
-              t=tipo[i][j];
+             cout<<"entreeeeeeeeeeeeeeeeeeeeee"<<endl;
+              t=estaziones[i][j].tipo;
               switch (t) {
               case 1:{
                   Estacion*aux=new  Estacionnormal();

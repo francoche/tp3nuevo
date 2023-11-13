@@ -12,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
     palette.setColor(palette.WindowText, Qt::black);
     ui->lcdNumber->setPalette(palette);
     this->ui->pushButton_2->setEnabled(false);
+    this->ui->pushButton_3->setEnabled(false);
+
 
 }
 
@@ -33,7 +35,7 @@ void MainWindow::crearjuego()
             this->botones[i][j] = new QPushButton(this);
             this->botones[i][j]->setText("camino");
             connect(botones[i][j], SIGNAL(clicked()), this, SLOT(graficador()));
-            //botones[i][j]->setStyleSheet("QPushButton {background-color:rgb(0, 0, 0); height: 25px; width: 25px; border-color: rgb(255, 102, 153); border-radius: 25%; border-style: solid; border-width: 7px; }");
+            botones[i][j]->setStyleSheet("QPushButton {background-color:rgb(255, 255, 255); height: 25px; width: 25px; border-radius: 25%; border-style: solid; border-width: 7px; }");
             this->ui->gridLayout->addWidget(this->botones[i][j], i, j);
             QObject::connect(this->botones[i][j],
                              &QPushButton::clicked,
@@ -52,11 +54,15 @@ void MainWindow::reset()
 
 void MainWindow::aumentartiempo()
 {
+    auto palette = ui->lcdNumber->palette();
+    palette.setColor(palette.WindowText, Qt::red);
     if(this->cronometro.get_tiempo()<10){
-
+        if(this->cronometro.get_tiempo()>5){
+        this->ui->lcdNumber->setPalette(palette);}
         this->cronometro.setaumentar();
         reset();
     }else{
+
         QMessageBox::information(this,"perdiste","perdiste");
         on_pushButton_2_clicked();
     }
@@ -81,12 +87,23 @@ void MainWindow::graficador()
         int a,b;
         if(juego.hayunaestacion2(juego.getfilaultimo(),juego.getcolumnaultimo(),auxfila,auxcolumna) && juego.sobreestacion(auxfila,auxcolumna)){
 
-           cronometro.setreset();
-           reset();
+            auto palette = ui->lcdNumber->palette();
+            palette.setColor(palette.WindowText, Qt::black);
+            this->ui->lcdNumber->setPalette(palette);
            juego.moverultimo(auxfila,auxcolumna);
            juego.resetecamino(auxfila,auxcolumna);
-           if(!juego.chekearclikeada(auxfila,auxcolumna) && juego.crearproximaestacion(a,b)){
+           bool aux=juego.crearproximaestacion(a,b);
+           if(!juego.chekearclikeada(auxfila,auxcolumna) && aux){
+               cronometro.setreset();
+               reset();
            this->botones[a][b]->setText("ESTACION "+QString::number(juego.gettipoestacion(a,b)));
+           }
+           if(aux==false){
+               on_pushButton_2_clicked();
+               QMessageBox::information(this,"ganaste","ganaste");
+               return;
+
+
            }
            if(juego.estacionclikeada(auxfila,auxcolumna)){
            this->botones[auxfila][auxcolumna]->setEnabled(false);
@@ -106,6 +123,7 @@ void MainWindow::graficador()
 
 void MainWindow::on_pushButton_clicked()
 {
+    this->ui->pushButton_3->setEnabled(false);
     this->ui->pushButton_2->setEnabled(true);
     this->ui->pushButton->setEnabled(false);
 
@@ -114,37 +132,60 @@ void MainWindow::on_pushButton_clicked()
     cout<<"tierra"<<filas<<" "<<columnas;
     int a,b,c,d;
     crearjuego();
-    timer.start(1000);
     juego.crearmatriz();
-    juego.crearestaciones(a,b,c,d);
+    bool aux=juego.crearestaciones(a,b,c,d);
+    if(aux){
+    timer.start(1000);
     this->botones[a][b]->setText("ESTACION "+QString::number(juego.gettipoestacion(a,b)));
     this->botones[c][d]->setText("ESTACION "+QString::number(juego.gettipoestacion(c,d)));
+    if(juego.estacionclikeada(a,b)){
     this->botones[a][b]->setEnabled(false);
+
+    }
+    }
+    else{
+        QMessageBox::information(this,"Error","dimensiones muy pequenias");
+        on_pushButton_2_clicked();
+        return;
+    }
+    botones[a][b]->setStyleSheet("QPushButton {background-color:rgb(255, 255, 51); height: 25px; width: 25px; border-radius: 25%; border-style: solid; border-width: 7px; }");
+
+
 
 }
 
 
 void MainWindow::on_pushButton_2_clicked()
 {
+    this->timer.stop();
+    auto palette = ui->lcdNumber->palette();
+    palette.setColor(palette.WindowText, Qt::black);
+    this->ui->lcdNumber->setPalette(palette);
+    this->ui->pushButton_3->setEnabled(false);
     this->ui->pushButton_2->setEnabled(false);
     this->ui->pushButton->setEnabled(true);
-
-    for (int i = 0; i< filas; i++) {
-        delete [] this->botones[i];
-    }
-    delete [] this->botones;
     juego.borrarmatriz();
-    this->timer.stop();
+    for (int i = 0; i< filas; i++) {
+        for (int j = 0; j< columnas; j++) {
+            this->botones[i][j]->deleteLater();
+        }
+    }
+    for (int i = 0; i< filas; i++) {
+            delete [] this->botones[i];
+        }
+        delete [] this->botones;
+
 
     this->cronometro.setreset();
     reset();
+
 }
 
 
 void MainWindow::on_pushButton_3_clicked()
 {
     juego.guardareztaciones();
-    juego.guardartipo();
+    //juego.guardartipo();
     juego.guardarpartida(this->ui->lcdNumber->value());
     juego.guardarcamino();
     juego.guardarocupado();
@@ -156,8 +197,10 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::on_pushButton_4_clicked()
 {
+    this->ui->pushButton_3->setEnabled(true);
+    this->ui->pushButton_2->setEnabled(true);
+    this->ui->pushButton->setEnabled(false);
     int tiempito;
-    //juego.borrarmatriz();
     juego.cargarpartida(tiempito);
     juego.leerdimensiones(filas,columnas);
     crearjuego();
@@ -193,10 +236,16 @@ void MainWindow::regraficar()
        if(juego.chekearultimo(i,j)){
            this->botones[i][j]->setEnabled(true);
        }
+       if(juego.getfilaultimo()==i && juego.getcolumnaultimo()==j){
+           botones[i][j]->setStyleSheet("QPushButton {background-color:rgb(255, 255, 51); height: 25px; width: 25px; border-radius: 25%; border-style: solid; border-width: 7px; }");
+
+       }
 
 
      }
     }
 
 }
+
+
 

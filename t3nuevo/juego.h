@@ -36,7 +36,7 @@ private:
     bool**ocuado;
     bool**existeestacion;
     bool**camino;
-    int **tipo;
+    //int **tipo;
     eestacion**estaziones;
     int filas;
     int columnas;
@@ -56,7 +56,7 @@ public:
     void setfilas(int a);
     void moverultimo(int fila,int columna);
     int gettipoestacion(int fila,int columna);
-    void crearestaciones(int &a,int &b,int &c,int &d);
+    bool crearestaciones(int &a,int &b,int &c,int &d);
     bool crearproximaestacion(int &a,int &b);
     void crearcamino(int fila,int columna);
     void resetecamino(int fila, int columna);
@@ -76,7 +76,7 @@ public:
     void guardarpartida(int timer);
     void guardarocupado();
     void guardarcamino();
-    void guardartipo();
+    //void guardartipo();
     void guardarexiestacion();
     void guardareztaciones();
     void copiarmatrizestacione();
@@ -85,7 +85,7 @@ public:
 
 
     bool** leerbool(char*a);
-    int **leertipo();
+   // int **leertipo();
     eestacion**leerestaziones();
 
 
